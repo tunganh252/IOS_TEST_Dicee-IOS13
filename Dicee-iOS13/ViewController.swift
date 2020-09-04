@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
-    var leftDiceNumber = 1;
-    var rightDiceNumber = 5;
+//    var leftDiceNumber = 1;
+//    var rightDiceNumber = 5;
     
 
     override func viewDidLoad() {
@@ -29,20 +29,32 @@ class ViewController: UIViewController {
 
     /*Reference tới Button Roll (chú ý action, type và animation)*/
     @IBAction func rollButtonPressed(_ sender: UIButton) {
-        print("Button Roll Pressed")
+      
         print("Call \(110+3) now !!!") /*String Interpolation: Chuỗi nội suy */
 
+        let arrDiceImage = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")];
         
-        diceImageView1.image = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")][leftDiceNumber];
-        diceImageView2.image = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")][rightDiceNumber];
+        let randomNumberLeft = Int.random(in: 0...arrDiceImage.count - 1);
+        let randomNumberRight = Int.random(in: 0...arrDiceImage.count - 1);
+  
+//        diceImageView1.image = arrDiceImage[randomNumberLeft];
+//        diceImageView2.image = arrDiceImage[randomNumberRight];
         
-        if leftDiceNumber < 5 {
-            leftDiceNumber = leftDiceNumber + 1;
-        }
         
-        if rightDiceNumber > 0 {
-          rightDiceNumber = rightDiceNumber - 1;
-        }
+        
+        diceImageView1.image = arrDiceImage.randomElement();
+        diceImageView2.image = arrDiceImage.randomElement();
+        
+        
+        
+//        if leftDiceNumber < 5 {
+//            leftDiceNumber = leftDiceNumber + 1;
+//        }
+//        if rightDiceNumber > 0 {
+//          rightDiceNumber = rightDiceNumber - 1;
+//        }
+        
+    
 
     }
     
